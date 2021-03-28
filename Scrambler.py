@@ -30,8 +30,8 @@ class Scrambler:
                 if self.zeroCount(i, 8):
                     self.scrambledSignal.voltage[i+3]='V'
                     self.scrambledSignal.voltage[i+4]='B'
-                    self.scrambledSignal.voltage[i+6]='B'
-                    self.scrambledSignal.voltage[i+7]='V'
+                    self.scrambledSignal.voltage[i+6]='V'
+                    self.scrambledSignal.voltage[i+7]='B'
                     i += 7 #przejscie do nastpenych 8 symboli
                 i+=1
     
