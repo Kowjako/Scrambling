@@ -8,9 +8,12 @@ Prowadzący: Piotr Patronik
 - Kodowanie/dekodowanie sygnału za pomocą algorymtu AES [✅]  
 ## Etap 2️⃣:
 - Scramblowanie sygnału metodami **B8ZS** oraz **HDB3** [✅]
-- Descramblowanie sygnału []
+- Descramblowanie sygnału [✅]
 - Zakłócenie sygnału []
-- Deskramblowanie sygnału
+## Etap 3️⃣:
+- Realizacja nadajnika []
+- Realizacja odbiornika []
+- Realizacja kanału tranmisyjnego []
 # Autorzy:
 👨‍💼 `Krystian Ogonowski`  
 👨‍💼 `Uladzimir Kaviaka`
