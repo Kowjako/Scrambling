@@ -10,7 +10,7 @@ Prowadzący: Piotr Patronik
 - Scramblowanie sygnału metodami **B8ZS** oraz **HDB3** [✅]
 - Descramblowanie sygnału []
 - Zakłócenie sygnału []
-
-# Autorzy 👨‍💼:
-`Krystian Ogonowski`  
-`Uladzimir Kaviaka`
+- Deskramblowanie sygnału
+# Autorzy:
+👨‍💼 `Krystian Ogonowski`  
+👨‍💼 `Uladzimir Kaviaka`
