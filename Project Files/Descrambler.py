@@ -13,7 +13,7 @@ class Descrambler:
                     self.descrambledsygnal.voltage[i] = 'Z'
                     self.descrambledsygnal.voltage[i+3] = 'Z'
                     j = 0
-                elif j % 2 == 1 and self.descrambledsygnal.voltage[i] == 'V': #maska byla 000V wiec wracamy zero na pozycji i+3
+                elif j % 2 == 1 and self.descrambledsygnal.voltage[i] == 'V': #maska byla 000V wiec wracamy zero na pozycji i
                     self.descrambledsygnal.voltage[i] = 'Z'
                     j = 0
                 i += 1
