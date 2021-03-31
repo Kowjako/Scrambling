@@ -7,7 +7,6 @@ class Scrambler:
         self.scrambledSignal = Sygnal(sygnal)
     def scramble(self, algorithm):
         if algorithm == "HDB3":
-            print("SCRAMBLING WITH HDB3")
             i = 0 # aktualna pozycja w sygnale
             j = 0 # ilosc jedynek w poprzednim ciagu
             while i < len(self.scrambledSignal.signal) - 3: #bo ostanio bedzie sprawdzana ciag o dlugosci cztery wiec odejmujemy 3
@@ -25,7 +24,6 @@ class Scrambler:
                         i += 3
                 i += 1        
         elif algorithm == "B8ZS": #North American T1
-            print("SCRAMBLING WITH B8ZS")
             i = 0
             while i < len(self.scrambledSignal.signal) - 7: #bo bedzie sprawdzany ciag o dlugosci 8 wiec odejmujemy 3 
                 if self.zeroCount(i, 8):

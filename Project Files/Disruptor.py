@@ -9,7 +9,7 @@ class Disruptor:
         while i < len(self.distSig.signal) - 1:
             # Lista ktora bedzie zawierac losowo miejsca zaklocen sygnalu
             distIndexList = []
-            prob = 0.039        #prawdopodobienstwo zaklocenia
+            prob = 0.045       #prawdopodobienstwo zaklocenia
 
             start = i       #pocz¹tek ci¹gu tych samych znaków
             while self.distSig.voltage[i] == self.distSig.voltage[i + 1] and self.distSig.voltage[i] == 'Z':
@@ -30,7 +30,7 @@ class Disruptor:
                 while j <= fragmentSize - x:  
                     j += 1
                 
-                prob = prob + j * 0.000015  #zwiekszenie prawdpodobienstwa wystapienia zaklocenia
+                prob = prob + j * 0.00001  #zwiekszenie prawdpodobienstwa wystapienia zaklocenia
                 prob = math.ceil(prob * fragmentSize)
                 j = 0
                 while j < prob:
@@ -49,16 +49,20 @@ class Disruptor:
                         self.distSig.voltage[distIndexList[j]] = 'H'
                     
                     self.distSig.signal[distIndexList[j]] = (self.distSig.signal[distIndexList[j]] + 1) % 2
+            start = 0
+            end = 0
             i+=1
         return self.distSig
 
 
     def disruption2(self,dist): 
-        distSig= self.distSig
+        distSig = []
+        for i in self.distSig:
+            distSig.append(i)
         i = 0
         while i <len(distSig) -1:
             distIndexList = []
-            prob = 0.039       #prawdopodobienstwo zak³ócenia
+            prob = 0.055       #prawdopodobienstwo zak³ócenia
             start=i
             while distSig[i] == distSig[i+1] and distSig[i]==0:
                 i+=1

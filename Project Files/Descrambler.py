@@ -1,9 +1,9 @@
 #Algorytm powraca zamienione zera
 class Descrambler:
-    def __init__(self, sygnal, algorithm):
+    def __init__(self, sygnal):
         self.descrambledsygnal = sygnal
+    def descramble(self, algorithm):
         if algorithm == "HDB3":
-            print("DESCRAMBLING WITH HDB3")
             i = 0 # aktualna pozycja w sygnale
             j = 0 # ilosc jedynek w poprzednim ciagu
             while i < len(self.descrambledsygnal.signal) - 3:  #ze wzgledu ze maska wyglada B00V lub 000V wiec ostatnie sprawdzenie bedzie na dlugosci -3
@@ -18,7 +18,6 @@ class Descrambler:
                     j = 0
                 i += 1
         elif algorithm == "B8ZS":
-            print("DESCRAMBLING WITH B8ZS")
             i = 0
             while i < len(self.descrambledsygnal.signal) - 4:  #ze wzgledu ze maska wyglada 000VB0VB wiec ostatnie sprawdzenie bedzie na dlugosci -4
                 if self.descrambledsygnal.voltage[i] == 'V':
