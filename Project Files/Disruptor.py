@@ -1,67 +1,68 @@
+import math
+import random
+
 class Disruptor:
-    def disruption(sig, dist): 
-        distSig = sig
+    def __init__(self,sig): #dodanie konstruktora
+        self.distSig = sig  #sygnal zaklocony
+    def disruption(self,dist): #zaklocenie sygnalu scramblowanego
         i = 0
-        while i < len(distSig.signal) - 1:
+        while i < len(self.distSig.signal) - 1:
             # Lista ktora bedzie zawierac losowo miejsca zaklocen sygnalu
             distIndexList = []
-            prob = 0.039        #z czego to jest? idk
+            prob = 0.039        #prawdopodobienstwo zaklocenia
 
-            start = i       #pocz膮tek ci膮gu tych samych znak贸w
-            while distSignal.voltage[i] == distSignal.voltage[i + 1] and distSignal.voltage[i] == 'Z':
+            start = i       #pocz箃ek ci筭u tych samych znak體
+            while self.distSig.voltage[i] == self.distSig.voltage[i + 1] and self.distSig.voltage[i] == 'Z':
                 i += 1
-                if i >= len(distSignal.signal) - 1:
+                if i >= len(self.distSig.signal) - 1:   #koniec sygnalu
                     break
-            end = i         #koniec ci膮gu tych samych znak贸w`
+            end = i         #koniec ci筭u tych samych znak體`
 
             if (dist == "B8ZS"):
-                x = 4
+                x = 4       #jaki musi byc ciag aby wystapilo zaklocenie
             else:
                 x = 3
             
-            fragmentSize = end - start + 1  #d艂ugo艣膰 ci膮gu tych samych znak贸w
+            fragmentSize = end - start + 1  #d硊go滄 ci筭u tych samych znak體
 
             if fragmentSize >= x:  
                 j = 0
                 while j <= fragmentSize - x:  
                     j += 1
                 
-                prob = prob + j * 0.000012  #co to za sta艂e prob
+                prob = prob + j * 0.000015  #zwiekszenie prawdpodobienstwa wystapienia zaklocenia
                 prob = math.ceil(prob * fragmentSize)
                 j = 0
                 while j < prob:
-                    distIndexList.append(random.randint(start, end))
+                    distIndexList.append(random.randint(start, end))    #generowanie mejsc zaklocenia sygnalu
                     j += 1
                 
                 for j in range(len(distIndexList)):
                 
-                    if distSig.signal[distIndexList[j]] == 1:
-                        distSig.voltage[distIndexList[j]] = 'Z'
+                    if self.distSig.signal[distIndexList[j]] == 1:
+                        self.distSig.voltage[distIndexList[j]] = 'Z'
                     
-                    elif distSig.signal == 0 and distSig.voltage[j - 1] == 'H':
-                        distSig.voltage[distIndexList[j]] = 'L'
+                    elif self.distSig.signal[distIndexList[j]] == 0 and self.distSig.voltage[j - 1] == 'H':
+                        self.distSig.voltage[distIndexList[j]] = 'L'
                     
                     else:
-                        distSig.voltage[distIndexList[j]] = 'H'
+                        self.distSig.voltage[distIndexList[j]] = 'H'
                     
-                    distSig.signal[distIndexList[j]] = (distSig.signal[distIndexList[j]] + 1) % 2
-            i+=1    #if problems occur delete that -
-        return distSig
+                    self.distSig.signal[distIndexList[j]] = (self.distSig.signal[distIndexList[j]] + 1) % 2
+            i+=1
+        return self.distSig
 
 
-    def disruption2(sig, dist): 
-
-        distSig=sig
-        for x in signal:
-            distSig.append(x)
-
-        while i <len(distSig) -1:
+    def disruption2(self,dist): 
+        distSig= self.distSig
+        i = 0
+        while i <len(distSig.signal) -1:
             distIndexList = []
-            prob = 0.039       #prawdopodobienstwo zak艂贸cenia
+            prob = 0.039       #prawdopodobienstwo zak丑cenia
             start=i
-            while distSig[i] == distSig[i+1] and distSig[i]==0:
+            while distSig.signal[i] == distSig.signal[i+1] and distSig.signal[i]==0:
                 i+=1
-                if i>= len(distSig) -1:
+                if i>= len(distSig.signal) -1:
                     break
             end =i
 
@@ -74,13 +75,13 @@ class Disruptor:
                 j=0
                 while j<= fragmentSize - x:
                     j+=1
-                prob=prob+j*0.000013 #some weird probability?
+                prob = prob + j*0.000015    #zwiekszenie prawdopodobienstwa w przypadku dlugiego ciagu
                 prob = math.ceil(prob*fragmentSize)
                 j=0
                 while j<prob:
                     distIndexList.append(random.randint(start,end))
                     j+= 1
                 for j in range(len(distIndexList)):
-                    distSig[distIndexList[j]] = int(not distSig[distIndexList[j]])
+                    distSig.signal[distIndexList[j]] = int(not distSig.signal[distIndexList[j]])
             i+=1
         return distSig
