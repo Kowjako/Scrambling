@@ -24,6 +24,7 @@ class sender:
             photo = ImageTk.PhotoImage(image)
             
             global imgLabel
+            
             #Tworzenie obrazu 
             imgLabel = Label(image=photo, borderwidth=2, relief="groove")
             imgLabel.image = photo
@@ -44,8 +45,13 @@ class sender:
             signal = bitTable
 
         def send(algorytm):  #przeslanie do odbiorcy
-            
-            #Channel.Channel(signal, selectedAlgorithm)
+            print("Wysylka do odborcy, sygnal poczatkowy: ")
+            print(signal)
+            if (algorytm.get() == 0):   #dla kazdego z RadioButton wpisane pole (variable) oraz wartosc (value) ktora bedzie wpisywana do algorytm 
+                selectedAlgorithm = "B8ZS"
+            if (algorytm.get() == 1):
+                selectedAlgorithm = "HDB3"
+            Channel.Channel(signal, selectedAlgorithm)
         
         algorytm = IntVar() #zmienna do przechowywania wybranego algorytmu
 
