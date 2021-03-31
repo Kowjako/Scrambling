@@ -10,9 +10,10 @@ class Channel:
         
         disrupter = Disruptor(sygnal)   #tworzenie descramblera na podstawie sygnalu poczatkowego
         
-        signal1 = disrupter.disruption2(sygnal, algorythm)  #zaklocenie sygnalu bez scramblowania
+        signal1 = disrupter.disruption2(algorythm)  #zaklocenie sygnalu bez scramblowania
         
-        signal2 = scrambler.scramble(algorythm).getScrambledSignal()  #wykonanie scramblingu na sygnale zadanym algorytmem
+        scrambler.scramble(algorythm)  #wykonanie scramblingu na sygnale zadanym algorytmem
+        signal2 = scrambler.getScrambledSignal()
         
         disrupter2 = Disruptor(signal2) #utworzenie disruptora na podstawie skramlowanego sygnalu
         

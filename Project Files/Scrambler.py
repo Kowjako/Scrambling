@@ -1,9 +1,10 @@
 #V - takie same jak poprzedni niezerowy impuls
 #B - oznacza napiecie przeciwne do poprzedzajacego niezerowego
+from Sygnal import Sygnal
 
 class Scrambler:
     def __init__(self, sygnal):
-        self.scrambledSignal = sygnal
+        self.scrambledSignal = Sygnal(sygnal)
     def scramble(self, algorithm):
         if algorithm == "HDB3":
             print("SCRAMBLING WITH HDB3")
@@ -36,7 +37,7 @@ class Scrambler:
                 i+=1
     
     def getScrambledSignal(self):
-        return self.scrambledSignal.voltage
+        return self.scrambledSignal
                 
     def zeroCount(self, startPos, countToCheck):
         for k in self.scrambledSignal.signal[startPos:startPos + countToCheck]: #sprawdzamy czy sa w ciagu okreslonej dlugosci jedynki

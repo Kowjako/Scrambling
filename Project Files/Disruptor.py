@@ -56,13 +56,13 @@ class Disruptor:
     def disruption2(self,dist): 
         distSig= self.distSig
         i = 0
-        while i <len(distSig.signal) -1:
+        while i <len(distSig) -1:
             distIndexList = []
             prob = 0.039       #prawdopodobienstwo zak³ócenia
             start=i
-            while distSig.signal[i] == distSig.signal[i+1] and distSig.signal[i]==0:
+            while distSig[i] == distSig[i+1] and distSig[i]==0:
                 i+=1
-                if i>= len(distSig.signal) -1:
+                if i>= len(distSig) -1:
                     break
             end =i
 
@@ -82,6 +82,6 @@ class Disruptor:
                     distIndexList.append(random.randint(start,end))
                     j+= 1
                 for j in range(len(distIndexList)):
-                    distSig.signal[distIndexList[j]] = int(not distSig.signal[distIndexList[j]])
+                    distSig[distIndexList[j]] = int(not distSig[distIndexList[j]])
             i+=1
         return distSig

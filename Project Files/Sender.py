@@ -42,11 +42,12 @@ class sender:
 
         def send(algorytm):  #przeslanie do odbiorcy
             print("Wysylka do odborcy, sygnal poczatkowy: ")
-            print(signal)
+            print(len(signal))
             if (algorytm.get() == 0):   #dla kazdego z RadioButton wpisane pole (variable) oraz wartosc (value) ktora bedzie wpisywana do algorytm 
                 selectedAlgorithm = "B8ZS"
             if (algorytm.get() == 1):
                 selectedAlgorithm = "HDB3"
+            window.destroy()
             Channel.Channel(signal, selectedAlgorithm)
         
         algorytm = IntVar() #zmienna do przechowywania wybranego algorytmu
