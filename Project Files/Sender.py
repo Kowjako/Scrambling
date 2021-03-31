@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import *
-from PIL import ImageTk
+from PIL import ImageTk, Image
 import Channel
 import numpy as np
 from tkinter.filedialog import askopenfilename
