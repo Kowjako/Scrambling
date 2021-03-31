@@ -1,12 +1,8 @@
-import time
 import tkinter as tk
 from tkinter import *
-from PIL import Image, ImageTk
-import matplotlib.pyplot as plt
-import matplotlib.cm as cm
+from PIL import ImageTk
 import Channel
 import numpy as np
-from random import shuffle
 from tkinter.filedialog import askopenfilename
 
 
@@ -82,4 +78,3 @@ class sender:
         
 
         window.mainloop() #wyswietlenie okna
- 
