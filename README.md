@@ -11,7 +11,7 @@ Prowadzący: Piotr Patronik
 - Descramblowanie sygnału [✅]
 - Zakłócenie sygnału [✅]
 ## Etap 3️⃣:
-- Realizacja nadajnika []
+- Realizacja nadajnika [✅]
 - Realizacja odbiornika []
 - Realizacja kanału tranmisyjnego []
 # Autorzy:
