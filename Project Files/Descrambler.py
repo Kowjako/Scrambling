@@ -27,7 +27,8 @@ class Descrambler:
                     self.descrambledsygnal.voltage[i + 3] = 'Z'
                     self.descrambledsygnal.voltage[i + 4] = 'Z'
                 i += 1
-                
+        return self.descrambledsygnal
+    
     def toZeroOneRepresentation(self):
         i = 0
         while i < len(self.descrambledsygnal.signal):
@@ -36,6 +37,3 @@ class Descrambler:
             else:
                 self.descrambledsygnal.signal[i] = 0
             i += 1
-            
-    def getDescrambledSygnal(self):
-        return self.descrambledsygnal

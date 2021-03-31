@@ -35,8 +35,6 @@ class Scrambler:
                     self.scrambledSignal.voltage[i+7]='B'
                     i += 7 #przejscie do nastpenych 8 symboli
                 i+=1
-    
-    def getScrambledSignal(self):
         return self.scrambledSignal
                 
     def zeroCount(self, startPos, countToCheck):
