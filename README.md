@@ -9,7 +9,7 @@ Prowadzący: Piotr Patronik
 ## Etap 2️⃣:
 - Scramblowanie sygnału metodami **B8ZS** oraz **HDB3** [✅]
 - Descramblowanie sygnału [✅]
-- Zakłócenie sygnału []
+- Zakłócenie sygnału [✅]
 ## Etap 3️⃣:
 - Realizacja nadajnika []
 - Realizacja odbiornika []
