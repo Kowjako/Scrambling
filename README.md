@@ -13,7 +13,7 @@ Prowadzący: Piotr Patronik
 ## Etap 3️⃣:
 - Realizacja nadajnika [✅]
 - Realizacja odbiornika []
-- Realizacja kanału tranmisyjnego []
+- Realizacja kanału tranmisyjnego [✅]
 # Autorzy:
 👨‍💼 `Krystian Ogonowski`  
 👨‍💼 `Uladzimir Kaviaka`
