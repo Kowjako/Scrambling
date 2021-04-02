@@ -5,14 +5,13 @@ Prowadzący: Piotr Patronik
 
 ## Etap 1️⃣:
 - Generowanie sygnału w postaci napięciowej na podstawie zero-jedynkowego przedstawienia [✅]
-- Kodowanie/dekodowanie sygnału za pomocą algorymtu AES [✅]  
-## Etap 2️⃣:
 - Scramblowanie sygnału metodami **B8ZS** oraz **HDB3** [✅]
+## Etap 2️⃣:
 - Descramblowanie sygnału [✅]
 - Zakłócenie sygnału [✅]
 ## Etap 3️⃣:
 - Realizacja nadajnika [✅]
-- Realizacja odbiornika []
+- Realizacja odbiornika [✅]
 - Realizacja kanału tranmisyjnego [✅]
 # Autorzy:
 👨‍💼 `Krystian Ogonowski`  
