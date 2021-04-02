@@ -65,3 +65,45 @@ class receiver:
             label3 = Label(image=photo, borderwidth=2)
             label3.image = photo
             label3.place(x = 580, y = 20)
+        
+        #Odebranie wszystkich trzech sygnalow
+        receive_puresignal(puresignal)
+        receive_puresignaldisrupted(puresignaldisrupted)
+        receive_descrambledSygnal(descrambledSygnal)
+        
+        disruptedBitsDiscrambled = comparePureToDescrambled(puresignal, descrambledSygnal)
+        disruptedBits = comparePureToDisrupted(puresignal, puresignaldisrupted)
+        percentage = disruptedBits * 100 / len(puresignal)
+        scramblingPercentage = disruptedBitsDiscrambled * 100 / len(puresignal)
+        
+        label1 = tk.Label(text="Obraz poczatkowy",width = 20, font=('Times New Roman', 10))
+        label1.place(x = 80, y = 290)
+        
+        label2 = tk.Label(text="Obrazek zaklocony bez scramblowania",width = 40, font=('Times New Roman', 10))
+        label2.place(x = 290, y = 290)
+        
+        label3 = tk.Label(text="Obrazek scramblowany",width = 40, font=('Times New Roman', 10))
+        label3.place(x = 570, y = 290)
+        
+        label4 = tk.Label(text="Dlugosc odebranego sygnalu: " + str(len(puresignal)) + " bitow", width = 40, font=('Times New Roman', 10))
+        label4.place(x = 0, y = 350)     
+        
+        label5 = tk.Label(text="Ilosc znieksztalconych bitow: " + str(disruptedBits),width = 33, font=('Times New Roman', 10))
+        label5.place(x = 0, y = 370)
+        
+        label6 = tk.Label(text="Wynosi to " + str(round(percentage,4)) + " % sygnalu",  width = 29, font=('Times New Roman', 10))
+        label6.place(x = 0, y = 390)
+
+        label7 = tk.Label(text="Metoda scramblingu: " + algorythm, width = 28, font=('Times New Roman', 10))
+        label7.place(x = 0, y = 430)
+        
+        label8 = tk.Label(text="Ilosc znieksztalconych bitow: " + str(disruptedBitsDiscrambled), width = 33, font=('Times New Roman', 10)) 
+        label8.place(x = 0, y = 450)
+
+        label9 = tk.Label(text="Wynosi to " + str(round(scramblingPercentage,4)) + " % sygnalu",  width = 29, font=('Times New Roman', 10))
+        label9.place(x = 0, y = 470)
+        
+        label10 = tk.Label(text="Jakosc obrazka poprawiona scramblingiem wynosi " + str(round(percentage - scramblingPercentage, 5)) + " %", width=100, font=('Times New Roman', 10))
+        label10.place(x = 200, y = 400)
+
+        window.mainloop()
