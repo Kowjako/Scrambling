@@ -1,5 +1,6 @@
 import math
 import random
+from numpy.matlib import rand
 
 class Disruptor:
     def __init__(self,sig): #dodanie konstruktora
@@ -89,3 +90,37 @@ class Disruptor:
                     distSig[distIndexList[j]] = int(not distSig[distIndexList[j]])
             i+=1
         return distSig
+    
+    def bscDistruption(self):
+        distSig = []
+        for i in self.distSig:
+            distSig.append(i);
+        i = 0
+        p = 0.001 #prawdopodobienstwo odebrania niepoprawnego bitu
+        for i in range(len(distSig)):
+            if(random.randint(0, 100)==p*100):
+                distSig[i] = int(not(distSig[i]))
+        return distSig
+    
+    def gilbertDistruption(self):
+        distSig = []
+        for i in self.distSig:
+            distSig.append(i);
+        i = 0
+        state = 'D'   #D - stan z ma³ym prawdopodobienstwem, Z - stan z duzym prawdopobienstwem
+        pSmall = 0.01 #stan z malym prawdopodobienstwem
+        pHuge = 0.1 #stan z duzym prawdopodbienstwem
+        for i in range(len(distSig)):
+            if(state == 'D'):
+                if(random.randint(0,100) >= 100-pHuge*100):       #stan z malym p
+                    distSig[i] = int(not(distSig[i]))
+                if(random.randint(0,100) >= 100-pHuge*100):
+                    state = 'Z'
+            if(state == 'Z'):
+                if(random.randint(0,100) >= 100-pSmall*100):       #stan z duzym p
+                    distSig[i] = int(not(distSig[i]))
+                if(random.randint(0,100) >= 100-pSmall*100):
+                    state = 'D'
+        return distSig
+        
+        
