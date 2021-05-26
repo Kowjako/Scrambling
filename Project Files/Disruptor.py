@@ -108,18 +108,18 @@ class Disruptor:
             distSig.append(i);
         i = 0
         state = 'D'   #D - stan z ma³ym prawdopodobienstwem, Z - stan z duzym prawdopobienstwem
-        pSmall = 0.01 #stan z malym prawdopodobienstwem
-        pHuge = 0.1 #stan z duzym prawdopodbienstwem
+        pSmall = 0.02 #male prawdopodobienstwo
+        pHuge = 0.2 #duze prawdopodbienstwo
         for i in range(len(distSig)):
             if(state == 'D'):
-                if(random.randint(0,100) >= 100-pHuge*100):       #stan z malym p
+                if(random.randint(0,101) >= 100 - pSmall*100):       #prawdopodobienstwo 2% male
                     distSig[i] = int(not(distSig[i]))
-                if(random.randint(0,100) >= 100-pHuge*100):
+                if(random.randint(0,101) >= pSmall*100):         #wieksze p ze zostanie w tym stanie 98%
                     state = 'Z'
             if(state == 'Z'):
-                if(random.randint(0,100) >= 100-pSmall*100):       #stan z duzym p
+                if(random.randint(0,101) >= 100 - pHuge*100):       #prawdopodobienstwo 20% duze
                     distSig[i] = int(not(distSig[i]))
-                if(random.randint(0,100) >= 100-pSmall*100):
+                if(random.randint(0,101) >= pHuge*100):        #mniejsze p ze zostanie w tym stanie 80%
                     state = 'D'
         return distSig
         
