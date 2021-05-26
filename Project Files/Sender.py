@@ -10,7 +10,7 @@ class sender:
     def __init__(self):
         window = tk.Tk()    #generowanie okna
         window.title("Nadawca sygnalu")
-        window.geometry("310x500")
+        window.geometry("310x600")
         window.resizable(False, False)
 
         def imgfromfile():  # wczytanie obrazu z pliku i konwertowanie do tablicy bitow
@@ -40,17 +40,24 @@ class sender:
             global signal
             signal = bitTable
 
-        def send(algorytm):  #przeslanie do odbiorcy
+        def send(algorytm, channel):  #przeslanie do odbiorcy
             print("Wysylka do odborcy, sygnal poczatkowy: ")
             print(len(signal))
             if (algorytm.get() == 0):   #dla kazdego z RadioButton wpisane pole (variable) oraz wartosc (value) ktora bedzie wpisywana do algorytm 
                 selectedAlgorithm = "B8ZS"
             if (algorytm.get() == 1):
                 selectedAlgorithm = "HDB3"
+            if(channel.get() == 0):
+                selectedChannel = "BSC"
+            if(channel.get() == 1):
+                selectedChannel = "Gilbert"
+            if(channel.get() == 2):
+                selectedChannel = "Main"
             window.destroy()
-            Channel.Channel(signal, selectedAlgorithm)
+            Channel.Channel(signal, selectedAlgorithm, selectedChannel)
         
         algorytm = IntVar() #zmienna do przechowywania wybranego algorytmu
+        channel = IntVar()  #zmienna do przechowywania wybranego kanalu transmisyjnego
 
         #Generowanie napisu twoj obrazek
         imageLabel = tk.Label(text="Twoj obrazek", fg="black", width=28, anchor="center",font=('Times New Roman', 12))
@@ -61,7 +68,7 @@ class sender:
         button1.place(x = 30, y = 340)
         
         #Generowanie przycisku wyslij
-        button4 = tk.Button(text="Wyslij obraz", height = 3, width = 15,font=('Times New Roman', 10), fg="#123456", command=lambda: send(algorytm))
+        button4 = tk.Button(text="Wyslij obraz", height = 3, width = 15,font=('Times New Roman', 10), fg="#123456", command=lambda: send(algorytm, channel))
         button4.place(x = 160, y = 340)
 
         #Generowanie napisu wybory typu scramblingu
@@ -76,6 +83,19 @@ class sender:
         button3 = tk.Radiobutton(text="HDB3", variable=algorytm, value=1, anchor="w", height=2)
         button3.place(x = 100, y = 440)
         
+        channelType = tk.Label(text="Wybierz typ kanalu: ", fg="black", width=30, anchor="w", font=('Times New Roman', 10))
+        channelType.place(x = 30, y = 480)
+        
+        #Generowanie przycisku algorytmu B8ZS 
+        button4 = tk.Radiobutton(text="BSC", variable=channel, value=0, anchor="w", height=2)
+        button4.place(x = 30, y = 500)
+        
+        #Generowanie przycisku algorytmu HDB3
+        button5 = tk.Radiobutton(text="Gilbert", variable=channel, value=1, anchor="w", height=2)
+        button5.place(x = 30, y = 530)
+        
+        button6 = tk.Radiobutton(text="Samodzielny", variable=channel, value=2, anchor="w", height=2)
+        button6.place(x = 30, y = 560)
         
 
         window.mainloop() #wyswietlenie okna
