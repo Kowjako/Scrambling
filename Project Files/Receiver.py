@@ -11,7 +11,7 @@ class receiver:
         window = tk.Tk() #tworzenie okna glownego
         window.title("Odbiorca sygnalu")
         window.resizable(False, False)
-        window.geometry("860x550")
+        window.geometry("1160x550")
 
         def comparePureToDescrambled(puresignal, descrambledSygnal):  # zestawienie dwoch sygnalow, pokazanie roznic
             descrambledSygnal = descrambledSygnal.signal
@@ -83,9 +83,25 @@ class receiver:
             for i in range(len(pureSignal)):
                 if(sygnal1[i]==1):     #sprawdzamy ile jedynek w oryginalu
                     original+=1
-                
-            return ((original+narzut)/original)*100 - 100  #procentowa wartosc narzutu
+                    
+            destroyedBits = []
+            j = 0
+            #Tworzenie obrazku zepsutych bitow#
+            for i in range(len(pureSignal)):
+                if(sygnal1[i]==0 and sygnal[i]==1):
+                    destroyedBits.append(1)
+                else:
+                    destroyedBits.append(0);
+                    
+            plt.imsave('narzut.png', np.array(destroyedBits).reshape(int(math.sqrt(len(destroyedBits))), int(math.sqrt(len(destroyedBits))))) 
+            image = Image.open("narzut.png").resize((250, 250))
             
+            photo = ImageTk.PhotoImage(image)
+            label4 = Label(image=photo, borderwidth=2)
+            label4.image = photo
+            label4.place(x = 860, y = 20)
+                
+            return ((original+narzut)/original)*100 - 100 #procentowa wartosc narzutu
         #Odebranie wszystkich trzech sygnalow
         
         receive_puresignal(puresignal)
@@ -107,6 +123,9 @@ class receiver:
         
         label3 = tk.Label(text="Obrazek scramblowany",width = 40, font=('Times New Roman', 10))
         label3.place(x = 570, y = 290)
+        
+        label12 = tk.Label(text="Bity zepsute",width = 40, font=('Times New Roman', 10))
+        label12.place(x = 850, y = 290)
         
         label4 = tk.Label(text="Dlugosc odebranego sygnalu: " + str(len(puresignal)) + " bitow", width = 40, font=('Times New Roman', 10))
         label4.place(x = 0, y = 350)     
