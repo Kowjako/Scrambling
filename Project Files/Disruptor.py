@@ -98,7 +98,7 @@ class Disruptor:
         i = 0
         p = 0.001 #prawdopodobienstwo odebrania niepoprawnego bitu
         for i in range(len(distSig)):
-            if(random.randint(0, 100)==p*100):
+            if(random.randint(0, 1000)==p*1000):
                 distSig[i] = int(not(distSig[i]))
         return distSig
     
