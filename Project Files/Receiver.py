@@ -11,7 +11,7 @@ class receiver:
         window = tk.Tk() #tworzenie okna glownego
         window.title("Odbiorca sygnalu")
         window.resizable(False, False)
-        window.geometry("860x500")
+        window.geometry("860x550")
 
         def comparePureToDescrambled(puresignal, descrambledSygnal):  # zestawienie dwoch sygnalow, pokazanie roznic
             descrambledSygnal = descrambledSygnal.signal
@@ -65,7 +65,29 @@ class receiver:
             label3.image = photo
             label3.place(x = 580, y = 20)
                 
+        def compareScrambledToPure(pureSignal, descrambledSygnal):
+            narzut = 0
+            sygnal = descrambledSygnal.signal   #sygnal po scramblowaniu
+            for i in range(len(sygnal)):
+                sygnal[i] = int(sygnal[i])
+            
+            sygnal1 = []                        #oryginal
+            for i in range(len(pureSignal)):
+                sygnal1.append(pureSignal[i])
+                
+            for i in range(len(pureSignal)):
+                if(sygnal1[i]==0 and sygnal[i]==1):     #sprawdzamy ile jedynek wstawiono zamiast zer
+                    narzut+=1
+                
+            original = 0
+            for i in range(len(pureSignal)):
+                if(sygnal1[i]==1):     #sprawdzamy ile jedynek w oryginalu
+                    original+=1
+                
+            return ((original+narzut)/original)*100 - 100  #procentowa wartosc narzutu
+            
         #Odebranie wszystkich trzech sygnalow
+        
         receive_puresignal(puresignal)
         receive_puresignaldisrupted(puresignaldisrupted)
         receive_descrambledSygnal(descrambledSygnal)
@@ -74,6 +96,8 @@ class receiver:
         disruptedBits = comparePureToDisrupted(puresignal, puresignaldisrupted)
         percentage = disruptedBits * 100 / len(puresignal)
         scramblingPercentage = disruptedBitsDiscrambled * 100 / len(puresignal)
+        
+        narzut = compareScrambledToPure(puresignal,descrambledSygnal)
 
         label1 = tk.Label(text="Obraz poczatkowy",width = 20, font=('Times New Roman', 10))
         label1.place(x = 80, y = 290)
@@ -104,4 +128,7 @@ class receiver:
         
         label10 = tk.Label(text="Jakosc obrazka poprawiona scramblingiem wynosi " + str(round(percentage - scramblingPercentage, 5)) + " %", width=100, font=('Times New Roman', 10))
         label10.place(x = 200, y = 400)
+        
+        label11 = tk.Label(text="Narzut scramblingiem wynosi: " + str(round(narzut, 5)) + " %", width=100, font=('Times New Roman', 10))
+        label11.place(x = 200, y = 450)
         window.mainloop()
