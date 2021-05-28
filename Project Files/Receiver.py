@@ -149,5 +149,5 @@ class receiver:
         label10.place(x = 200, y = 400)
         
         label11 = tk.Label(text="Narzut scramblingiem wynosi: " + str(round(narzut, 5)) + " %", width=100, font=('Times New Roman', 10))
-        label11.place(x = 200, y = 450)
+        label11.place(x = 240, y = 450)
         window.mainloop()
